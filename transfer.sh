@@ -77,9 +77,9 @@ echo "./transfer.sh -d test2.txt"
  singleDownload $2
  printDownloadResponse $2 
  exit;;
-    *)
- multiUpload $@
+#    *)
+# multiUpload $@
 # echo $1
- exit;; 
+# exit;; 
  esac
 
