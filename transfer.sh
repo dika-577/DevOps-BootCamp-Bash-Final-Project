@@ -49,7 +49,7 @@ return "printDownloadResponse"
 
 
 
- if [ "$#" -eq  1 ] && [ "$1" = "-h" ]; then
+ if [ "$1" = "-h" ]; then
 echo "Description: Bash tool to transfer files from the command line."
 echo "Usage:"
 echo "-d  download"
