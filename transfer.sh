@@ -9,7 +9,7 @@ for file in "$@";
 do 
   if   test -f "$file"; then
     file_url=$(curl --upload-file "$file" "https://transfer.sh/$file") 
-    curl --upload-file "$file" "https://transfer.sh/$file" &> /dev/null
+    curl -s --upload-file "$file" "https://transfer.sh/$file" 
     filePath=$(echo "$file_url")  
     fileID="$file"
 
