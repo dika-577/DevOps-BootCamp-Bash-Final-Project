@@ -28,7 +28,7 @@ singleUpload "$1" || exit 1
 printUploadResponse
 
 for file in "$@"; do 
-  if  [ "$1" != "-h" ] && [ "$1" !=  "-d" ] && test -f "$file"; then
+  if   test -f "$file"; then
      curl --upload-file "$file" "https://transfer.sh/$file" 
  echo " "
 
