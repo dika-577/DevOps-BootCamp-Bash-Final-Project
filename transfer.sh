@@ -1,4 +1,4 @@
-#!/bin/curl
+#!/bin/bash
 
 currentVersion="0.0.1"
 
@@ -49,7 +49,7 @@ return "printDownloadResponse"
 
 
 
- if [ "$#" -eq 1 ] && [ "$1" = "-h" ]; then
+ if [ "$#" -eq  1 ] && [ "$1" = "-h" ]; then
 echo "Description: Bash tool to transfer files from the command line."
 echo "Usage:"
 echo "-d  download"
