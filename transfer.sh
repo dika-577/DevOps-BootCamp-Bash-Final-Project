@@ -18,7 +18,8 @@ do
     fileID="$file"
 
     echo "Uploading $fileID"
-    echo "Transfer File URL: $filePath"
+    echo "####################################################### 100.0%"
+    echo "Transfer File URL: $file_url"
 #    else 
   #   echo "Not file"
   fi
@@ -73,8 +74,8 @@ echo "./transfer.sh -d test2.txt"
   help_bar
  exit;;
   "-d")
- singleDownload
- printDownloadResponse
+ singleDownload $2
+ printDownloadResponse $2 
  exit;;
     *)
  multiUpload $@
