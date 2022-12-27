@@ -14,7 +14,7 @@ do
    #echo $(basename $file)
     file_url=$(curl  -s --progress-bar  --upload-file "$file" "https://transfer.sh/$file") 
     #curl -s  --upload-file "$file" "https://transfer.sh/$file" 
-    filePath=$(echo "$file_url")  
+    #filePath=$(echo "$file_url")  
     fileID="$file"
 
     echo "Uploading $fileID"
@@ -74,8 +74,8 @@ echo "./transfer.sh -d test2.txt"
   help_bar
  exit;;
   "-d")
- singleDownload $2
- printDownloadResponse $2 
+ singleDownload "$2"
+ printDownloadResponse "$2" 
  exit;;
 #    *)
 # multiUpload $@
