@@ -2,46 +2,54 @@
 
 currentVersion="1.23.0"
 
-multiUpload ()
+multiUpload()
 {
-
+#echo $@
 for file in "$@";
-do 
+do
+#echo $file
+
+#file=$1
   if   test -f "$file"; then
-    file_url=$(curl --upload-file "$file" "https://transfer.sh/$file") 
-    curl -s --upload-file "$file" "https://transfer.sh/$file" 
+   #echo $(basename $file)
+    file_url=$(curl  -s --progress-bar  --upload-file "$file" "https://transfer.sh/$file") 
+    #curl -s  --upload-file "$file" "https://transfer.sh/$file" 
     filePath=$(echo "$file_url")  
     fileID="$file"
 
     echo "Uploading $fileID"
     echo "Transfer File URL: $filePath"
-
+#    else 
+  #   echo "Not file"
   fi
 done
 }
 
 singleDownload() {
 
- if [ "$1" = "-d" ]; then
+# if [ "$1" = "-d" ]; then
    curl "$2"  &> /dev/null
- fi
+# fi
  
 }
 
 printDownloadResponse()
 {
- if [ "$1" = "-d" ]; then
+# if [ "$1" = "-d" ]; then
   filepath="$2"
   file_name=$(echo "$filepath" | cut -d "/" -f 5)
   echo "Downloading $file_name"  
- fi
+# fi
 
 }
 
 
+
+
+
 help_bar()
 {
- if [ "$1" = "-h" ]; then
+# if [ "$1" = "-h" ]; then
 echo "Usage:"
 echo "-d  download"
 echo "-h  Show the help ..." 
@@ -50,8 +58,27 @@ echo "Examples:"
 echo "./transfer.sh test.txt "
 echo "./transfer.sh test.txt test2.txt"
 echo "./transfer.sh -d test2.txt"
-  elif [ "$1" = "-v" ]; then
-echo "$currentVersion"
+#  elif [ "$1" = "-v" ]; then
+#echo "$currentVersion"
 
- fi
+ #fi
 }
+
+ case $1 in
+
+  "-v")
+     echo "$currentVersion"    
+  exit;;
+  "-h")
+  help_bar
+ exit;;
+  "-d")
+ singleDownload
+ printDownloadResponse
+ exit;;
+    *)
+ multiUpload $@
+# echo $1
+ exit;; 
+ esac
+
