@@ -1,19 +1,20 @@
 #!/bin/bash
 
-currentVersion="0.0.1"
+currentVersion="1.23.0"
 
 multiUpload ()
 {
 
-for file in "$@"; do 
+for file in "$@";
+do 
   if   test -f "$file"; then
     file_url=$(curl --upload-file "$file" "https://transfer.sh/$file") 
     curl --upload-file "$file" "https://transfer.sh/$file" &> /dev/null
-filePath=$(echo "$file_url")  
-fileID="$file"
+    filePath=$(echo "$file_url")  
+    fileID="$file"
 
-echo "Uploading $fileID"
-echo "Transfer File URL: $filePath"
+    echo "Uploading $fileID"
+    echo "Transfer File URL: $filePath"
 
   fi
 done
@@ -41,7 +42,6 @@ printDownloadResponse()
 help_bar()
 {
  if [ "$1" = "-h" ]; then
-echo "Description: Bash tool to transfer files from the command line."
 echo "Usage:"
 echo "-d  download"
 echo "-h  Show the help ..." 
