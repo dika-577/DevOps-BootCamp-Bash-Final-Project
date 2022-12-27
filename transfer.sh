@@ -29,7 +29,7 @@ done
 singleDownload() {
 
 # if [ "$1" = "-d" ]; then
-   curl "$2"  &> /dev/null
+   curl -s "$2"  
 # fi
  
 }
